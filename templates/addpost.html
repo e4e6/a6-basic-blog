@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+    
+<div class="d-flex container bg-secondary justify-content-center align-items-center position-absolute top-50 start-50 translate-middle" style="min-height: 400px;">
+    <form class="" action="" method="post" novalidate autocomplete="off">
+
+        {{ form.hidden_tag() }}
+        {{ form.title.label(class="form-label") }} 
+        {{ form.title(class="form-control") }} 
+        {% for error in form.title.errors %}
+        <span style="color: rgb(53, 14, 14);">[{{ error }}]</span>
+        {% endfor %}
+        <br>
+        {{ form.text.label(class="form-label") }} 
+        {{ form.text(class="form-control" ,cols=32, rows=4) }}
+        {% for error in form.text.errors %}
+        <span style="color: rgb(53, 14, 14);">[{{ error }}]</span>
+        {% endfor %}
+        {% for message in get_flashed_messages() %}
+        <span style="color: rgb(53, 14, 14);">[{{ message }}]</span>
+        {% endfor %}
+        <br>
+
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+</div>
+
+
+{% endblock main_content %}

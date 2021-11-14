@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<br>
+
+
+<h3 class="text-center">Blog Posts</h3>
+
+{% for post in posts %}
+
+<div class="mx-auto card text-white bg-secondary mb-4">
+    <!-- <h3 class="card-header border-info bg-transparent">{{ post.title }}</h3> -->
+    <div class="card-body">
+        <h5 class="card-title fw-bold font-monospace text-info"><span style="color: rgb(116, 240, 133);">Title:</span>{{
+            post.title }}</h5>
+        <p class="card-text">{{ post.text }}</p>
+    </div>
+    <div class="card-footer border-0 bg-secondary" style="align-self: end;"> <span > <span
+                style="color: rgb(116, 240, 133);">By:</span> {{ post.user.username}} <span
+                style="color: rgb(116, 240, 133);">Date:</span> {{
+            post.created_date.strftime('%B %d, %Y') }} </span>
+        <span>{% if current_user.username == post.user.username %}
+
+            <form action="{{ url_for('deletepost',post_id=post.id) }}" method="POST"><button type="submit"
+                    class="btn btn-outline-light float-end">Delete</button></form>
+            {% endif %}
+        </span>
+
+    </div>
+
+
+
+</div>
+{% endfor %}
+
+{% endblock main_content %}

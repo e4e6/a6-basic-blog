@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block main_content %}
+
+<div class="d-flex container bg-secondary justify-content-center align-items-center position-absolute top-50 start-50 translate-middle" style="min-height: 400px;">
+<form action="" method="post" novalidate autocomplete="off">
+
+    {{ form.hidden_tag() }}
+    {{ form.username.label(class="form-label") }}
+    {{ form.username(class="form-control") }}
+    {% for error in form.username.errors %}
+    <span style="color: rgb(53, 14, 14);">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    
+    {{ form.password.label(class="form-label") }}
+    {{ form.password(class="form-control") }} 
+    {% for error in form.password.errors %}
+    <span style="color: rgb(53, 14, 14);">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    
+    {{ form.password_confirm.label(class="form-label") }}
+    {{ form.password_confirm(class="form-control") }} 
+    {% for error in form.password_confirm.errors %}
+    <span style="color: rgb(53, 14, 14);">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    
+
+
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+</div>
+
+
+
+{% endblock main_content %}
